@@ -25,7 +25,7 @@ class Database:
 
     def seed_into_database(self, user_uuid: str, data: dict, base_64_data: str):
         """Seeds the relevant information into the database"""
-        sql = "INSERT INTO participants (uuid,first_name, last_name, gender, email, team_name,  qr_data) VALUES (%s,%s, %s, %s, %s, %s, %s)"
+        sql = "INSERT INTO Participant (uuid,first_name, last_name, gender, email, team_name,  qr_data) VALUES (%s,%s, %s, %s, %s, %s, %s)"
         values = (
             str(user_uuid),
             data["First Name"],

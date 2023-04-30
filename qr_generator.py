@@ -13,9 +13,9 @@ import base64
 class QRCodeConfiguration:
     """QR Configuration Class"""
 
-    front_color: tuple = (158, 145, 165)
-    middle_color: tuple = (74, 62, 76)
-    back_color: tuple = (69, 63, 104)
+    front_color: tuple =  (255,255,255,255)# (158, 145, 165)
+    middle_color: tuple =  (255,255,255,255)#(74, 62, 76)
+    back_color: tuple =  (0,0,0)# (69, 63, 104) 
     logo_path: tuple = os.path.join(os.getcwd(), "logo.png")
     output_directory: tuple = os.path.join(os.getcwd(), "output")
 
@@ -42,8 +42,8 @@ class QRGenerator:
             image_factory=StyledPilImage,
             # module_drawer=RoundedModuleDrawer(),
             color_mask=RadialGradiantColorMask(
-                QRCodeConfiguration.back_color,
-                (255, 255, 255),
+                QRCodeConfiguration.front_color,
+                QRCodeConfiguration.middle_color,
                 QRCodeConfiguration.front_color,
             ),
             embeded_image_path=QRCodeConfiguration.logo_path,
