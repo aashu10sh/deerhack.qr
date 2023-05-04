@@ -1,10 +1,17 @@
 import mysql.connector
 
+# cnx = mysql.connector.connect(
+#     user="deerhack",
+#     password="winter_is_coming",
+#     host="127.0.0.1",
+#     database="deerhack_fs",
+# )
+
 cnx = mysql.connector.connect(
-    user="deerhack",
-    password="winter_is_coming",
+    user="root",
+    password="mysqldb",
     host="127.0.0.1",
-    database="deerhack_fs",
+    database="deerhack_food"
 )
 
 
@@ -30,9 +37,9 @@ class Database:
             str(user_uuid),
             data["First Name"],
             data["Last Name"],
-            data["Gender"],
+            "Male",
             data["Email"],
-            data["Team Name"],
+            "",
             base_64_data,
         )
         self.cursor.execute(sql, values)

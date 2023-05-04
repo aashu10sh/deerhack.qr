@@ -33,7 +33,7 @@ class FoodSystem:
             data["First Name"],
             data["Last Name"],
             data["Email"],
-            data["Team Name"],
+            "",
         )
         return individual.main()
 
