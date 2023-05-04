@@ -1,10 +1,10 @@
 import mysql.connector
 
 cnx = mysql.connector.connect(
-    user="deerhack",
-    password="winter_is_coming",
+    user="fastapi",
+    password="fastapipassword",
     host="127.0.0.1",
-    database="deerhack_fs",
+    database="test",
 )
 
 
