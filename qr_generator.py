@@ -14,9 +14,9 @@ import base64
 class QRCodeConfiguration:
     """QR Configuration Class"""
 
-    front_color: tuple =  (48,41,76)# (158, 145, 165)
-    middle_color: tuple =  (48,41,76)#(74, 62, 76)
-    back_color: tuple =  (255,255,255)
+    front_color: tuple = (48, 41, 76)  # (158, 145, 165)
+    middle_color: tuple = (48, 41, 76)  # (74, 62, 76)
+    back_color: tuple = (255, 255, 255)
     logo_path: tuple = os.path.join(os.getcwd(), "logo.png")
     output_directory: tuple = os.path.join(os.getcwd(), "output")
 
@@ -47,7 +47,9 @@ class QRGenerator:
             #     # QRCodeConfiguration.middle_color,
             #     # QRCodeConfiguration.front_color,
             # ),
-            color_mask=SolidFillColorMask(QRCodeConfiguration.back_color, QRCodeConfiguration.front_color),
+            color_mask=SolidFillColorMask(
+                QRCodeConfiguration.back_color, QRCodeConfiguration.front_color
+            ),
             # embeded_image_path=QRCodeConfiguration.logo_path,
         )
 
@@ -55,11 +57,11 @@ class QRGenerator:
         """Responsible for Setting the data to the image, add fields, etc.. here"""
         self.qr.add_data(
             {
-                # "First-Name": self.first_name,
-                # "Last-Name": self.last_name,
+                "First-Name": self.first_name,
+                "Last-Name": self.last_name,
                 # "Name":f"{self.first_name} {self.last_name}",
                 # "Email": self.email,
-                # "Team": self.team,
+                "Team": self.team,
                 "ID": str(self.id),
                 # "Message": "Any Tampering with the QR code or the Food system will result in direct elimination :)",
             },
@@ -85,22 +87,25 @@ class QRGenerator:
         return base_64_data
 
     def add_text(self):
-        img = Image.new('RGB', (490, 543), color=QRCodeConfiguration.back_color)
+        img = Image.new("RGB", (490, 543), color=QRCodeConfiguration.back_color)
         img.paste(self.image)
 
         draw = ImageDraw.Draw(img)
 
-        font = ImageFont.truetype('font/Poppins-Bold.ttf', 40)
+        font = ImageFont.truetype("font/Poppins-Bold.ttf", 40)
 
         text = f"{self.first_name.title()} {self.last_name.title()}"
 
-        _, _, w, h = draw.textbbox((0,0), text, font=font)
+        _, _, w, h = draw.textbbox((0, 0), text, font=font)
 
-
-        draw.text(((490 - w) / 2, (510-h)), text, font=font, fill=QRCodeConfiguration.front_color)
+        draw.text(
+            ((490 - w) / 2, (510 - h)),
+            text,
+            font=font,
+            fill=QRCodeConfiguration.front_color,
+        )
 
         self.image = img
-
 
     def main(self) -> str:
         """Main Method, Responsible for creating all qr codes, rearrange the execution structure here..
@@ -109,7 +114,7 @@ class QRGenerator:
         self.data()
         self.style()
 
-        self.add_text()
+        # self.add_text()
 
         self.save()
         return self.get_base64_of_qr_image()
@@ -118,9 +123,9 @@ class QRGenerator:
 if __name__ == "__main__":
     gen = QRGenerator(
         str(uuid.uuid4()),
-        "Aashutosh",
-        "Pudsaini",
-        "aashutosh.pudasaini@deerwalk.edu.np",
-        "GoalDiggers",
+        "Amrit",
+        "Pudasaini",
+        "amrit.pudasaini@gmeial.com",
+        "Hacker",
     )
     gen.main()

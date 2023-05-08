@@ -1,18 +1,18 @@
 import mysql.connector
 
-# cnx = mysql.connector.connect(
-#     user="deerhack",
-#     password="winter_is_coming",
-#     host="127.0.0.1",
-#     database="deerhack_fs",
-# )
-
 cnx = mysql.connector.connect(
-    user="root",
-    password="mysqldb",
+    user="fastapi",
+    password="fastapipassword",
     host="127.0.0.1",
-    database="deerhack_food"
+    database="test",
 )
+
+# cnx = mysql.connector.connect(
+#     user="root",
+#     password="mysqldb",
+#     host="127.0.0.1",
+#     database="deerhack_food"
+# )
 
 
 class Database:
